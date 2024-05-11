@@ -12,12 +12,18 @@
         <img style="width:20vw;" src="images/poly-2.jpg" alt="">
         <img style="width:20vw;" src="images/poly-3.jpg" alt="">
         <img style="width:20vw;" src="images/poly-6.jpg" alt="">
-        <img style="width:20vw;" src="images/poly-4.jpg" alt="">
         <img style="width:20vw;" src="images/poly-5.jpg" alt="">
     </div>
-    <div style="display: flex; align-items: center; justify-content: center;">
-        <strong><p style="font-size: 2vw;">Here's a roly-poly fact: </p></strong>
-        // Place fact here
-    </div>
+    <strong><p style="font-size: 2vw; text-align: center;">Here's a roly-poly fact: </p></strong>
+    <p style="font-size: 1.5vw; text-align: center;">
+    <?php 
+        $conn = mysqli_connect("localhost", "root", "", "POLY_DATA") or die("Connection failed: " . mysqli_connect_error()); 
+
+        $result = mysqli_query($conn, "SELECT FACT_DESCRIPT FROM FACT ORDER BY RAND( ) LIMIT 1;"); 
+        $fact = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        echo $fact[0]["FACT_DESCRIPT"];  
+    ?>
+    </p>
 </body>
 </html>
